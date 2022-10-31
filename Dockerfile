@@ -39,6 +39,4 @@ RUN if [ "$with_models" = "true" ]; then  \
   ./venv/bin/python install_models.py;  \
   fi \
   fi
-
-EXPOSE 5000
-ENTRYPOINT [ "./venv/bin/libretranslate", "--host", "0.0.0.0","--port","$PORT" ]
+ENTRYPOINT [ "./venv/bin/libretranslate", "--host", "0.0.0.0","--port","${PORT}" ]
