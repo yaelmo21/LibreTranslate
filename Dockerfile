@@ -1,5 +1,7 @@
 FROM python:3.8.14-slim-bullseye as builder
 
+ENV SERVER_PORT=$PORT
+
 WORKDIR /app
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -39,4 +41,4 @@ RUN if [ "$with_models" = "true" ]; then  \
   ./venv/bin/python install_models.py;  \
   fi \
   fi
-ENTRYPOINT [ "./venv/bin/libretranslate", "--host", "0.0.0.0","--port","${PORT}" ]
+ENTRYPOINT [ "./venv/bin/libretranslate", "--host", "0.0.0.0","--port","${SERVER_PORT}"]
